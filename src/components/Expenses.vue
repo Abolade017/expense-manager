@@ -92,7 +92,7 @@
                   >
                   <Button
                     class="rounded-sm h-12 w-36 text-white bg-red-900 opacity-80"
-                    @click="back"
+                    @click="hideModalBox"
                     >No</Button
                   >
                 </div>
