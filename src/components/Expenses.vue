@@ -159,6 +159,7 @@ export default {
     },
     deleteExp(expense) {
       this.expenses = this.expenses.filter((e) => e !== expense);
+      this.$router.push('/');
     },
     back() {
       //  console.log('done');
