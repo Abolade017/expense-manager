@@ -1,5 +1,8 @@
 # expens-manager
 
+#expense-manager url
+expense-manager-c020a3.netlify.app
+
 ## Project setup
 ```
 npm install
