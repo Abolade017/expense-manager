@@ -91,7 +91,8 @@
                     >Yes</Button
                   >
                   <Button
-                    class="rounded-sm h-12 w-36 text-white bg-red-900 opacity-80" @click="back"
+                    class="rounded-sm h-12 w-36 text-white bg-red-900 opacity-80"
+                    @click="back"
                     >No</Button
                   >
                 </div>
@@ -159,11 +160,11 @@ export default {
     deleteExp(expense) {
       this.expenses = this.expenses.filter((e) => e !== expense);
     },
-    back(){
-          //  console.log('done');
-        this.$router.go(-1);
+    back() {
       //  console.log('done');
-    }
+      this.$router.go(-1);
+      //  console.log('done');
+    },
   },
 };
 </script>
