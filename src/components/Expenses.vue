@@ -1,27 +1,13 @@
 <template>
   <div class="mx-10 md:px-24">
-    <form @submit.prevent="addExp">
-      <label for="">expense name</label><br />
-      <input
-        type="text"
-        name=""
-        id=""
-        class="border rounded-md h-12 w-48"
-        v-model="newName"
-      /><br />
-      <label for="">expense amount</label><br />
-      <input
-        type="text"
-        name=""
-        id=""
-        class="border rounded-md h-12 w-48"
-        v-model.number="newAmount"
-      /><br />
-      <label for="">completed</label><br />
-      <select class="border rounded-md h-12 w-48" v-model="done">
-        <option value="false">False</option>
-        <option value="true">True</option>
-      </select>
+    <form action="" @submit.prevent="">
+      <label for="" class="py-2">expense name</label><br />
+      <FormInput v-model="newName" />
+      <label for="" class="py-2">expense amount</label><br />
+      <FormInput v-model.number="newAmount" />
+       <label for="">completed</label><br />
+      <Select v-model="done" />
+
       <button
         @click="addExp"
         class="bg-blue-900 text-white h-6 rounded-sm mt-4 w-20"
@@ -29,6 +15,7 @@
         Add Expenses
       </button>
     </form>
+
     <div class="flex justify-between items-center py-6">
       <h1 class="text-blue-700 text-lg md:text-xl font-bold">All Expenses</h1>
       <h1 class="text-blue-700 text-lg md:text-xl font-bold">Amount</h1>
@@ -109,16 +96,18 @@
 let id = 0;
 import ModalBox from "@/components/Modal.vue";
 import Button from "@/components/Button.vue";
+import FormInput from "./FormInput.vue";
+import Select from "./Select";
 export default {
   name: "Expenses",
   props: {},
-  components: { ModalBox, Button },
+  components: { ModalBox, Button, FormInput, Select },
   data() {
     return {
-      isComplete: false,
       newName: "",
       newAmount: "",
-      done: "",
+      done: false,
+      isComplete: false,
       isModalboxVisible: false,
       expenses: [
         { id: id++, name: "DSTV Sub", amount: 20.0, completed: false },
@@ -148,23 +137,15 @@ export default {
         amount: this.newAmount,
         completed: this.done,
       });
-      this.newName = "";
       console.log(this.expenses);
     },
     showModalbox() {
       this.isModalboxVisible = true;
     },
-    hideModalBox() {
-      this.isModalboxVisible = false;
-    },
+    hideModalBox() {},
     deleteExp(expense) {
       this.expenses = this.expenses.filter((e) => e !== expense);
-      this.$router.push('/');
-    },
-    back() {
-      //  console.log('done');
-      this.$router.go(-1);
-      //  console.log('done');
+      this.isModalboxVisible = false;
     },
   },
 };
